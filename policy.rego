@@ -1,3 +1,5 @@
+package policy
+
 default region_is_allowed = false
 
 
