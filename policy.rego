@@ -20,6 +20,6 @@ region_is_allowed {
 
 
 is_allowed(region){
-	{"eu-west-1"}[region]
+	{"eu-west-1", "us-east-1"}[region]
 }
 
