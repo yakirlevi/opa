@@ -114,14 +114,21 @@ is_allowed_instance_type(resource, provider_name, instance_type_keys) {
 }
 
 
-# --- Validate providers names ---
+# --- Validate providers ---
+
+
 
 default provider_is_allowed = false
 
+
+
 provider_is_allowed {
-	is_allowed_privder(tfplan.resource_changes[_].provider_name)
+    provider_name:=get_basename(tfplan.resource_changes[_].provider_name)
+    is_allowed_provider(provider_name)
 }
 
-is_allowed_privder(provider_name) {
-	startswith(provider_name, "registry.terraform.io/hashicorp/")
+
+
+is_allowed_provider(provider_name) {
+    {"aws"}[provider_name]
 }
