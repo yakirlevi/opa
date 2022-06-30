@@ -38,6 +38,10 @@ s3_acl_is_allowed {
         not resources.change.after.acl == "public-read-write"
 }
 
+array_contains(arr, elem) {
+  arr[_] = elem
+}
+
 allowed_acls = ["private"]
 deny[reason] {
     r := s3_buckets[_]
