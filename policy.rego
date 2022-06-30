@@ -35,7 +35,7 @@ s3_acl_is_allowed {
 	resources := tfplan.resource_changes[_]
 	resources.type == "aws_s3_bucket"
 	
-        not resources.change.after.acl == "public"
+        not resources.change.after.acl == "public-read-write"
 }
 
 
