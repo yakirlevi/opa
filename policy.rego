@@ -35,23 +35,8 @@ s3_acl_is_allowed {
 	resources := tfplan.resource_changes[_]
 	resources.type == "aws_s3_bucket"
 	
-        not resources.change.after.acl == "public-read-write"
+        not resources.change.after.acl == "private"
 }
-
-array_contains(arr, elem) {
-  arr[_] = elem
-}
-
-allowed_acls = ["private"]
-deny[reason] {
-    r := s3_buckets[_]
-    not array_contains(allowed_acls, r.change.after.acl)
-    reason := sprintf(
-        "%s: ACL %q is not allowed",
-        [r.address, r.change.after.acl]
-    )
-}
-
 
 # --- Validate allowed resources ---
 
