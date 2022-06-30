@@ -38,6 +38,16 @@ s3_acl_is_allowed {
         not resources.change.after.acl == "public-read-write"
 }
 
+allowed_acls = ["private"]
+deny[reason] {
+    r := s3_buckets[_]
+    not array_contains(allowed_acls, r.change.after.acl)
+    reason := sprintf(
+        "%s: ACL %q is not allowed",
+        [r.address, r.change.after.acl]
+    )
+}
+
 
 # --- Validate allowed resources ---
 
