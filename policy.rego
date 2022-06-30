@@ -33,7 +33,7 @@ s3_acl_is_allowed {
 }
 s3_acl_is_allowed {
 	resources := tfplan.resource_changes[_]
-	resources.type == "aws_s3_bucket"
+	resources.type == "aws_s3_bucket_acl"
 	
         not resources.change.after.acl == "private"
 }
