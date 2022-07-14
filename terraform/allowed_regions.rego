@@ -7,7 +7,7 @@ import input as tfplan
 
 get_region(provider_name) = region{
     region_var_name:= trim_prefix(input.configuration.provider_config[provider_name].expressions.region.references[0], "var.")
-    region= tfplan.variables[region_var_name].value
+    region:= tfplan.variables[region_var_name].value
 }
 get_region(provider_name) = region{
     region:= tfplan.configuration.provider_config[provider_name].expressions.region.constant_value
