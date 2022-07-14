@@ -25,5 +25,5 @@ deny[reason] {
     provider_name:= get_basename(tfplan.resource_changes[_].provider_name)
     region:= get_region(provider_name)
     not contains(data.allowed_regions, region)
-    reason:= concat("",["Invalid Region: '", region, "'. The allowed regions are: ", sprintf("%s", [data.allowed_regions])])
+    reason:= concat("",["Invalid region: '", region, "'. The allowed regions are: ", sprintf("%s", [data.allowed_regions])])
 }
