@@ -1,4 +1,4 @@
-package policies
+package torque
 
 import input as tfplan
 
