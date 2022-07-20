@@ -10,7 +10,7 @@ get_basename(path) = basename{
 }
 
 contains(arr, elem) {
-  arr[_] = elem
+  arr[_] == elem
 }
 
 deny[reason] {
