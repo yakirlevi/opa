@@ -3,14 +3,21 @@ package torque
 test_allow_providers {
   result:= deny 
                 with input as data.plan_mock
-                with data.allowed_providers as ["aws"]                 
+                with data.allowed_providers as ["aws"]
   count(result) == 0
 }
 
-test_deny_unsupported_provider {
+test_allow_providers_case_insensitive {
   result:= deny 
                 with input as data.plan_mock
-                with data.allowed_providers as ["null", "azurerm"] 
+                with data.allowed_providers as ["null", "aWs"]
+  count(result) == 0
+}
+
+test_deny_unsupported_providers {
+  result:= deny 
+                with input as data.plan_mock
+                with data.allowed_providers as ["null", "azurerm"]
   count(result) == 1
 }
 
