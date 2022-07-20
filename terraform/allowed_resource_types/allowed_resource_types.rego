@@ -5,7 +5,7 @@ import input as tfplan
 # --- Validate resource types ---
 
 contains(arr, elem){
-    arr[_] = elem
+    arr[_] == elem
 }
 
 deny[reason] {
