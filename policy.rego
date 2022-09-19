@@ -131,3 +131,22 @@ provider_is_allowed {
 is_allowed_provider(provider_name) {
     {"aws"}[provider_name]
 }
+
+
+# --- Validate allowed location azure ---
+
+default location_is_allowed = false
+
+location_is_allowed {
+	location:= tfplan.configuration.provider_config.aws.expressions.location.constant_value
+	is_allowed_location(location)
+}
+location_is_allowed {
+	location_vars_name:= trim_prefix(input.configuration.provider_config.aws.expressions.location.references[0], "var.")
+	location:= tfplan.variables[location_var_name].value	
+	is_allowed_location(location)
+}
+
+is_allowed_location(location) {
+	{"eastus", "northeurope"}[location]
+}
