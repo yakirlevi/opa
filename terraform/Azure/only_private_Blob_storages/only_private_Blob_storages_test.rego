@@ -17,6 +17,6 @@ test_deny_blob_storage_with_non_private_acl {
 
 test_validate_deny_message {
   result:= deny with input as data.plan_mock.public_read_write_blob_storage
-  expected_deny_message:= "Deployment of not private blobstorage bucket is not allowed"
+  expected_deny_message:= "Deployment of not private blob storage is not allowed"
   result[expected_deny_message]
 }
