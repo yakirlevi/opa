@@ -1,12 +1,12 @@
 package torque
 
-test_allow_private_blob_storage {
-  result:= deny with input as data.plan_mock.robotshop_private_blob_storage
+test_allow_private_blob_storages {
+  result:= deny with input as data.plan_mock.private_blob_storage
   count(result) == 0
 }
 
 test_allow_non_blob_storage_types {
-  result:= deny with input as data.plan_mock.aws_instance
+  result:= deny with input as data.plan_mock.azure_vm
   count(result) == 0
 }
 
@@ -17,6 +17,6 @@ test_deny_blob_storage_with_non_private_acl {
 
 test_validate_deny_message {
   result:= deny with input as data.plan_mock.public_read_write_blob_storage
-  expected_deny_message:= "Deployment of not private blob storage bucket is not allowed"
+  expected_deny_message:= "Deployment of not private blobstorage bucket is not allowed"
   result[expected_deny_message]
 }
