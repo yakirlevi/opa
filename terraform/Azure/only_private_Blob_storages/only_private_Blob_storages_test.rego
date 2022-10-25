@@ -20,3 +20,4 @@ test_validate_deny_message {
   expected_deny_message:= "Deployment of not private blob storage is not allowed"
   result[expected_deny_message]
 }
+

@@ -10,3 +10,4 @@ deny[reason] {
     resources.change.after.acl != "private"
     reason:= "Deployment of not private Blob storage is not allowed"
 }
+
