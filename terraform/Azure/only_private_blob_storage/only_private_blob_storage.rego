@@ -1,9 +1,12 @@
 package torque
+
 import input as tfplan
 
+# --- Validate blob storage are private ---
+
 deny[reason] {
-    allowed_set:= { x | x:= data.allowed_locations[_] }
-    results_set:= { r | r:= tfplan.resource_changes[_].change.after.location }
+    allowed_set:= { "private" }
+    results_set:= { r | r:= tfplan.resource_changes[_].change.after.container_access_type }
     diff:= results_set - allowed_set
     
     # print("allowed_set:       ", allowed_set)
@@ -11,5 +14,6 @@ deny[reason] {
     # print("diff:              ", diff)
 
     count(diff) > 0 # if true -> deny! and return this error ("reason") below
-    reason:= concat("",["Invalid location: '", sprintf("%s", [results_set]),"'. The allowed Azure locations are: ", sprintf("%s", [allowed_set])])
+    reason:= "Deployment of a not private Azure blob storage is not allowed"
 }
+

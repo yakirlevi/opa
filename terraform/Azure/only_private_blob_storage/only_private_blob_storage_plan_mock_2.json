@@ -1,7 +1,7 @@
 {
-  "plan_mock": {
-    "format_version": "0.2",
-    "terraform_version": "1.0.4",
+  "plan_mock_2": {
+    "format_version": "1.1",
+    "terraform_version": "1.3.2",
     "planned_values": {
       "root_module": {
         "resources": [
@@ -68,6 +68,49 @@
               "routing": [],
               "share_properties": [],
               "static_website": []
+            }
+          },
+          {
+            "address": "azurerm_storage_blob.blobon",
+            "mode": "managed",
+            "type": "azurerm_storage_blob",
+            "name": "blobon",
+            "provider_name": "registry.terraform.io/hashicorp/azurerm",
+            "schema_version": 1,
+            "values": {
+              "cache_control": null,
+              "content_md5": null,
+              "content_type": "application/octet-stream",
+              "name": "blobon",
+              "parallelism": 8,
+              "size": 0,
+              "source": "some-local-file.zip",
+              "source_content": null,
+              "source_uri": null,
+              "storage_account_name": "blobsa",
+              "storage_container_name": "content",
+              "timeouts": null,
+              "type": "Block"
+            },
+            "sensitive_values": {
+              "metadata": {}
+            }
+          },
+          {
+            "address": "azurerm_storage_container.blobst",
+            "mode": "managed",
+            "type": "azurerm_storage_container",
+            "name": "blobst",
+            "provider_name": "registry.terraform.io/hashicorp/azurerm",
+            "schema_version": 1,
+            "values": {
+              "container_access_type": "public",
+              "name": "content",
+              "storage_account_name": "blobsa",
+              "timeouts": null
+            },
+            "sensitive_values": {
+              "metadata": {}
             }
           },
           {
@@ -226,6 +269,74 @@
         }
       },
       {
+        "address": "azurerm_storage_blob.blobon",
+        "mode": "managed",
+        "type": "azurerm_storage_blob",
+        "name": "blobon",
+        "provider_name": "registry.terraform.io/hashicorp/azurerm",
+        "change": {
+          "actions": [
+            "create"
+          ],
+          "before": null,
+          "after": {
+            "cache_control": null,
+            "content_md5": null,
+            "content_type": "application/octet-stream",
+            "name": "blobon",
+            "parallelism": 8,
+            "size": 0,
+            "source": "some-local-file.zip",
+            "source_content": null,
+            "source_uri": null,
+            "storage_account_name": "blobsa",
+            "storage_container_name": "content",
+            "timeouts": null,
+            "type": "Block"
+          },
+          "after_unknown": {
+            "access_tier": true,
+            "id": true,
+            "metadata": true,
+            "url": true
+          },
+          "before_sensitive": false,
+          "after_sensitive": {
+            "metadata": {}
+          }
+        }
+      },
+      {
+        "address": "azurerm_storage_container.blobst",
+        "mode": "managed",
+        "type": "azurerm_storage_container",
+        "name": "blobst",
+        "provider_name": "registry.terraform.io/hashicorp/azurerm",
+        "change": {
+          "actions": [
+            "create"
+          ],
+          "before": null,
+          "after": {
+            "container_access_type": "public",
+            "name": "content",
+            "storage_account_name": "blobsa",
+            "timeouts": null
+          },
+          "after_unknown": {
+            "has_immutability_policy": true,
+            "has_legal_hold": true,
+            "id": true,
+            "metadata": true,
+            "resource_manager_id": true
+          },
+          "before_sensitive": false,
+          "after_sensitive": {
+            "metadata": {}
+          }
+        }
+      },
+      {
         "address": "azurerm_storage_container.bloby",
         "mode": "managed",
         "type": "azurerm_storage_container",
@@ -260,6 +371,7 @@
       "provider_config": {
         "azurerm": {
           "name": "azurerm",
+          "full_name": "registry.terraform.io/hashicorp/azurerm",
           "expressions": {
             "features": [
               {}
@@ -317,6 +429,59 @@
             "schema_version": 3
           },
           {
+            "address": "azurerm_storage_blob.blobon",
+            "mode": "managed",
+            "type": "azurerm_storage_blob",
+            "name": "blobon",
+            "provider_config_key": "azurerm",
+            "expressions": {
+              "name": {
+                "constant_value": "blobon"
+              },
+              "source": {
+                "constant_value": "some-local-file.zip"
+              },
+              "storage_account_name": {
+                "references": [
+                  "azurerm_storage_account.blobsa.name",
+                  "azurerm_storage_account.blobsa"
+                ]
+              },
+              "storage_container_name": {
+                "references": [
+                  "azurerm_storage_container.blobst.name",
+                  "azurerm_storage_container.blobst"
+                ]
+              },
+              "type": {
+                "constant_value": "Block"
+              }
+            },
+            "schema_version": 1
+          },
+          {
+            "address": "azurerm_storage_container.blobst",
+            "mode": "managed",
+            "type": "azurerm_storage_container",
+            "name": "blobst",
+            "provider_config_key": "azurerm",
+            "expressions": {
+              "container_access_type": {
+                "constant_value": "private"
+              },
+              "name": {
+                "constant_value": "content"
+              },
+              "storage_account_name": {
+                "references": [
+                  "azurerm_storage_account.blobsa.name",
+                  "azurerm_storage_account.blobsa"
+                ]
+              }
+            },
+            "schema_version": 1
+          },
+          {
             "address": "azurerm_storage_container.bloby",
             "mode": "managed",
             "type": "azurerm_storage_container",
@@ -340,6 +505,32 @@
           }
         ]
       }
-    }
+    },
+    "relevant_attributes": [
+      {
+        "resource": "azurerm_resource_group.blobrg",
+        "attribute": [
+          "location"
+        ]
+      },
+      {
+        "resource": "azurerm_resource_group.blobrg",
+        "attribute": [
+          "name"
+        ]
+      },
+      {
+        "resource": "azurerm_storage_account.blobsa",
+        "attribute": [
+          "name"
+        ]
+      },
+      {
+        "resource": "azurerm_storage_container.blobst",
+        "attribute": [
+          "name"
+        ]
+      }
+    ]
   }
 }

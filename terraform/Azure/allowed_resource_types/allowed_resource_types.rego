@@ -2,14 +2,15 @@ package torque
 
 import input as tfplan
 
-# --- Validate resource types ---
-
-contains(arr, elem){
-    arr[_] == elem
-}
-
 deny[reason] {
-    resource_type:= tfplan.resource_changes[_].type
-    not contains(data.allowed_resource_types, resource_type)
-    reason:= concat("",["Invalid resource type: '", resource_type, "'. The allowed resource types are: ", sprintf("%s", [data.allowed_resource_types])])
+    allowed_set:= { x | x:= data.allowed_resource_types[_] }
+    results_set:= { r | r:= tfplan.resource_changes[_].type }
+    diff:= results_set - allowed_set
+    
+    # print("allowed_set:       ", allowed_set)
+    # print("used_locations:    ", results_set)
+    # print("diff:              ", diff)
+
+    count(diff) > 0 # if true -> deny! and return this error ("reason") below
+    reason:= concat("",["Invalid resource type: '", sprintf("%s", [results_set]),"'. The allowed Azure resource types are: ", sprintf("%s", [allowed_set])])
 }

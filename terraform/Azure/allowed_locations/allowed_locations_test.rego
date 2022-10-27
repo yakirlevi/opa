@@ -1,23 +1,26 @@
 package torque
 
 test_allowed_locations {
-  result:= deny 
+  reason:= deny 
                 with input as data.plan_mock
-                with data.allowed_locations as ["eastus"]                
-  count(result) == 0
+                with data.allowed_locations as ["eastus"]  
+                # with data.allowed_locations as ["eastusXXX"]  # uncomment this to fail the test 
+  count(reason) == 0
 }
 
-test_deny_unsupported_location {
+test_deny_unsupported_locations {
   result:= deny 
                 with input as data.plan_mock
-                with data.allowed_locations as ["eastus2", "westus2"] 
+                with data.allowed_locations as ["eastus2"] 
   count(result) == 1
 }
 
 test_validate_deny_message {
-  result:= deny 
+  reason:= deny 
                 with input as data.plan_mock
                 with data.allowed_locations as ["eastus2", "westus2"] 
-  expected_deny_message:= "Invalid location: 'eastus'. The allowed locations are: [\"eastus2\", \"westus2\"]"
-  result[expected_deny_message]
+                # with data.allowed_locations as ["eastus"] # uncomment this line to fail the test
+  expected_deny_message:= "Invalid location: '{\"eastus\"}'. The allowed Azure locations are: {\"eastus2\", \"westus2\"}"
+
+  reason[expected_deny_message]
 }
