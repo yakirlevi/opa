@@ -28,8 +28,6 @@ $ terraform show -json planfile > plan.json
 ### Perform OPA Policy Evaluation
 Policy evaluation can be performed using the `opa eval` command as follows.
 
-###### --data {path_to_variables_json_file}
-
 ```bash
 $ opa eval --format pretty --data {PATH_TO_REGO_FILE} --input {PATH_TO_INPUT_JSON_FILE} {PATH_TO_QUERY}
 ```
