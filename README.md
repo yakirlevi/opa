@@ -26,13 +26,13 @@ Each template folder includes 3 file types.
 
 All policy templates are described below; including the external data accompanying each of them.
 
-| Policy                                 | Description                                                                    | External Data                          |
-| -------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------- |
-| [terraform/allowed_providers/allowed_providers.rego](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_providers/allowed_providers.rego) | Checks the allowed Terraform providers an environment is allowed to deploy on. | `allowed_providers` For exmaple: *["aws", "azurerm"]* |
-| [terraform/allowed_regions/allowed_regions.rego](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_regions/allowed_regions.rego) | Checks the AWS allowed regions for deploying environments. | `allowed_regions` For exmaple: *["eu-west-1", "us-east-2"]* |
-| [terraform/allowed_resource_types/allowed_resource_types.rego](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_resource_types/allowed_resource_types.rego) | Checks the AWS resources an environment is allowed to deploy. | `allowed_resource_types` For exmaple: *["aws_instance"]* |
-| [terraform/aws_prohibited_instance_types/aws_prohibited_instance_types.rego](https://github.com/QualiTorque/opa/blob/main/terraform/aws_prohibited_instance_types/aws_prohibited_instance_types.rego) | Checks the instance types that environments are **not allowed** to deploy on AWS. | `prohibited_instance_types` For exmaple: *["t2.2xlarge", "t2.xlarge", "t2.large"]* |
-| [terraform/only_private_S3_buckets/only_private_S3_buckets.rego](https://github.com/QualiTorque/opa/blob/main/terraform/only_private_S3_buckets/only_private_S3_buckets.rego) | Allow AWS S3 Bucket deployment only with private permissions. | |
+| Policy Template | Description | External Data |
+| --------------- | ----------- | ------------- |
+| [Allowed Providers](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_providers/allowed_providers.rego) | Checks the allowed Terraform providers an environment is allowed to deploy on. | `allowed_providers`  Exmaple: *["aws", "azurerm"]* |
+| [AWS Allowed Regions](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_regions/allowed_regions.rego) | Checks the AWS allowed regions for deploying environments. | `allowed_regions`  Example: *["eu-west-1", "us-east-2"]* |
+| [AWS Allowed Resource Types](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_resource_types/allowed_resource_types.rego) | Checks the AWS resources an environment is allowed to deploy. | `allowed_resource_types`  Exmaple: *["aws_instance"]* |
+| [AWS Prohibited Instance Types](https://github.com/QualiTorque/opa/blob/main/terraform/aws_prohibited_instance_types/aws_prohibited_instance_types.rego) | Checks the instance types that environments are **not allowed** to deploy on AWS. | `prohibited_instance_types`  Exmaple: *["t2.2xlarge", "t2.xlarge", "t2.large"]* |
+| [AWS Only Private S3 Buckets](https://github.com/QualiTorque/opa/blob/main/terraform/only_private_S3_buckets/only_private_S3_buckets.rego) | Allow AWS S3 Bucket deployment only with private permissions. | |
 
 ## Policy Evaluation
 
