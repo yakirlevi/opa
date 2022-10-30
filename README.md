@@ -1,6 +1,6 @@
 # Qulai Torque built-in OPA policy templates
 
-OPA template collection to create Torque security policies.
+OPA built-in template collection to create Torque security policies.
 
 ## Resources
 
@@ -13,19 +13,13 @@ OPA template collection to create Torque security policies.
 ## Policy In Torque
 
 Torque allows adding a security policy based on the OPA policy templates that this repo contains. As described in the documentation above, account admin users can create an instance from a template, specify the external data values, and define the enforcement scope - the whole account or specific spaces.
+Once a security policy is created, the enforcement will be active at the selected scope.
 
-## Policy Template Files
+## Available Policy Template List
 
-Each template folder includes 3 file types.
+All available built-in policy templates are described below; including the external data accompanying each of them.
 
-- `*.rego`: The OPA policy
-- `*_test.rego`: Tests 
-- `*_mock.json`: Mocked 'input' data for the tests
-
-## Policy Template List
-
-All policy templates are described below; including the external data accompanying each of them.
-
+### Terraform Based Policy Templates
 | Policy Template | Description | External Data |
 | --------------- | ----------- | ------------- |
 | [Allowed Providers](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_providers/allowed_providers.rego) | Checks the allowed Terraform providers an environment is allowed to deploy on. | `allowed_providers`  Example: *["aws", "azurerm"]* |
@@ -33,6 +27,14 @@ All policy templates are described below; including the external data accompanyi
 | [AWS Allowed Resource Types](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_resource_types/allowed_resource_types.rego) | Checks the AWS resources an environment is allowed to deploy. | `allowed_resource_types`  Example: *["aws_instance"]* |
 | [AWS Prohibited Instance Types](https://github.com/QualiTorque/opa/blob/main/terraform/aws_prohibited_instance_types/aws_prohibited_instance_types.rego) | Checks the instance types that environments are **not allowed** to deploy on AWS. | `prohibited_instance_types`  Example: *["t2.2xlarge", "t2.xlarge", "t2.large"]* |
 | [AWS Only Private S3 Buckets](https://github.com/QualiTorque/opa/blob/main/terraform/only_private_S3_buckets/only_private_S3_buckets.rego) | Allow AWS S3 Bucket deployment only with private permissions. | |
+
+## Policy Template Folder Content
+
+Each template folder includes 3 file types.
+
+- `*.rego`: The OPA policy
+- `*_test.rego`: Tests 
+- `*_mock.json`: Mocked 'input' data for the tests
 
 ## Policy Evaluation
 
@@ -85,7 +87,7 @@ To submit a PR follow the standard process.
 3. Commit and push
 4. Submit a pull request
 
-Before submitting the PR for the new policy or bug fix you should confirm it works using `opa eval` as shown above and validates the mock-based tests work using `opa test` command against the policy files folder.
+Before submitting the PR for the new policy or bug fix you should confirm it works using `opa eval` as shown above and validate the mock-based tests work using `opa test` command against the policy files folder.
 
 Tests evaluation example:
 
