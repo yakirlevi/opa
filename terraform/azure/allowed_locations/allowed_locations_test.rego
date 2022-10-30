@@ -20,7 +20,7 @@ test_validate_deny_message {
                 with input as data.plan_mock
                 with data.allowed_locations as ["eastus2", "westus2"] 
                 # with data.allowed_locations as ["eastus"] # uncomment this line to fail the test
-  expected_deny_message:= "Invalid location: '{\"eastus\"}'. The allowed Azure locations are: {\"eastus2\", \"westus2\"}"
+  expected_deny_message:= "Invalid location: 'eastus'. The allowed Azure locations are: [\"eastus2\", \"westus2\"]"
 
   reason[expected_deny_message]
 }
