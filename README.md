@@ -8,6 +8,8 @@ OPA template collection to create Torque security policies.
 
 * OPA documentation: https://www.openpolicyagent.org/docs/latest/
 
+* OPA Playground: https://play.openpolicyagent.org/
+
 ## Policy In Torque
 
 Torque allows adding a security policy based on the OPA policy templates that this repo contains. As described in the documentation above, account admin users can create an instance from a template, specify the external data values, and define the enforcement scope - the whole account or specific spaces.
