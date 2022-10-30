@@ -1,4 +1,4 @@
-# Qulai Torque built-in OPA policy templates
+# Quali Torque built-in OPA policy templates
 
 OPA built-in template collection to create Torque security policies.
 
@@ -27,6 +27,10 @@ All available built-in policy templates are described below; including the exter
 | [AWS Allowed Resource Types](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_resource_types/allowed_resource_types.rego) | Checks the AWS resources an environment is allowed to deploy. | `allowed_resource_types`  Example: *["aws_instance"]* |
 | [AWS Prohibited Instance Types](https://github.com/QualiTorque/opa/blob/main/terraform/aws_prohibited_instance_types/aws_prohibited_instance_types.rego) | Checks the instance types that environments are **not allowed** to deploy on AWS. | `prohibited_instance_types`  Example: *["t2.2xlarge", "t2.xlarge", "t2.large"]* |
 | [AWS Only Private S3 Buckets](https://github.com/QualiTorque/opa/blob/main/terraform/only_private_S3_buckets/only_private_S3_buckets.rego) | Allow AWS S3 Bucket deployment only with private permissions. | |
+| [Azure Allowed Location](https://github.com/QualiTorque/opa/blob/main/terraform/azure/allowed_locations/allowed_locations.rego) | Checks the Azure allowed locations for deploying environments. | `allowed_locations`  Example: *["eastus2", "westus2"]* |
+| [Azure Allowed Resource Types](https://github.com/QualiTorque/opa/blob/main/terraform/azure/allowed_resource_types/allowed_resource_types.rego) | Checks the Azure resources an environment is allowed to deploy. | `allowed_resource_types`  Example: *["azure_vm", "azure_date_lake_storage"]* |
+| [Azure Prohibited VM Sizes](https://github.com/QualiTorque/opa/blob/main/terraform/aws_prohibited_instance_types/aws_prohibited_instance_types.rego) | Checks the VM sizes that environments are **not allowed** to deploy on Azure. | `prohibited_vm_sizes`  Example: *["E2ads_v5", "E8bds_v5"]* |
+| [Azure Only Private Blob Storage](https://github.com/QualiTorque/opa/blob/main/terraform/azure/only_private_blob_storage/only_private_blob_storage.rego) | Allow Azure Blob storage deployment only with private permissions. | |
 
 ## Policy Template Folder Content
 
