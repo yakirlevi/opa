@@ -22,6 +22,18 @@ Each template folder includes 3 file types.
 - `*_test.rego`: Tests 
 - `*_mock.json`: Mocked 'input' data for the tests
 
+## Policy Template List
+
+All policy templates are described below; including the external data accompanying each of them.
+
+| Policy                                 | Description                                                                    | 
+| -------------------------------------- | ------------------------------------------------------------------------------ |
+| [terraform/allowed_providers/allowed_providers.rego](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_providers/allowed_providers.rego) | Checks the allowed Terraform providers an environment is allowed to deploy on. |
+| [terraform/allowed_regions/allowed_regions.rego](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_regions/allowed_regions.rego) | Checks the AWS allowed regions for deploying environments. |
+| [terraform/allowed_resource_types/allowed_resource_types.rego](https://github.com/QualiTorque/opa/blob/main/terraform/allowed_resource_types/allowed_resource_types.rego) | Checks the AWS resources an environment is allowed to deploy. |
+| [terraform/aws_prohibited_instance_types/aws_prohibited_instance_types.rego](https://github.com/QualiTorque/opa/blob/main/terraform/aws_prohibited_instance_types/aws_prohibited_instance_types.rego) | Checks the instance types that environments are **not allowed** to deploy on AWS. |
+| [terraform/only_private_S3_buckets/only_private_S3_buckets.rego](https://github.com/QualiTorque/opa/blob/main/terraform/only_private_S3_buckets/only_private_S3_buckets.rego) | Allow AWS S3 Bucket deployment only with private permissions. |
+
 ## Policy Evaluation
 
 ### Policy Input Genenraion
