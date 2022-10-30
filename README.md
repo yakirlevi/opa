@@ -4,7 +4,7 @@ OPA template collection to create Torque security policies.
 
 ## Resources
 
-* Documentation for using policies in Torque: https://docs.qtorque.io/admin-guide/security-policies#how-to-add-a-security-policy
+* Documentation for using policies in Torque: https://docs.qtorque.io/admin-guide/security-policies
 
 * OPA documentation: https://www.openpolicyagent.org/docs/latest/
 
