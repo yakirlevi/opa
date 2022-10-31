@@ -16,7 +16,7 @@ contains(arr, elem){
 deny[reason] {
     resource := tfplan.resource_changes[_]
     get_basename(resource.provider_name) == "aws"
-    instance_type:= tfplan.resource_changes[_].change.after.instance_type
+    instance_type:= resource.change.after.instance_type
     contains(data.prohibited_instance_types, instance_type)
     reason:= concat("",["Invalid instance type: '", instance_type, "'. The prohibited instance types are: ", sprintf("%s", [data.prohibited_instance_types])])
 }
