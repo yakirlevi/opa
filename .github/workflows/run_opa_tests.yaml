@@ -1,0 +1,23 @@
+name: Run OPA tests
+run-name: triggered by ${{ github.actor }}
+on:
+  pull_request:
+    branches:
+      - "main"
+jobs:
+  Run-OPA-Tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v3
+
+    - name: Setup OPA
+      uses: open-policy-agent/setup-opa@v2
+      with:
+        version: 0.39
+        
+    - name: Grant execute permission for run OPA tests script
+      run: chmod +x .github/scripts/run_opa_tests.sh
+      
+    - name: Run OPA tests script
+      run: ./.github/scripts/run_opa_tests.sh
