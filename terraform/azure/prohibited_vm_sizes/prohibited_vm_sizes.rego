@@ -1,4 +1,5 @@
 package torque
+
 import input as tfplan
 
 # --- Validate azure vm sizes ---
@@ -13,5 +14,5 @@ deny[reason] {
     # print("diff:              ", diff)
 
     count(diff) > 0 # if true -> deny! and return this error ("reason") below
-    reason:= concat("",["Invalid VM size: '", sprintf("%s", [results_set]),"'. The prohibited VM sizes for Azure are: ", sprintf("%s", [allowed_set])])
+    reason:= concat("", ["Invalid VM size: '", sprintf("%s", [results_set[_]]), "'. The prohibited VM sizes for Azure are: ", sprintf("%s", [data.prohibited_vm_sizes])])    
 }

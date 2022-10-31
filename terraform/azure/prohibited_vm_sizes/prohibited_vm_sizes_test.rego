@@ -18,6 +18,6 @@ test_validate_deny_message {
   result:= deny 
                 with input as data.plan_mock
                 with data.prohibited_vm_sizes as ["DS1_v2", "D2ads_v5"]
-  expected_deny_message:= "Invalid VM size: '{\"Standard_DS1_v2\"}'. The prohibited VM sizes for Azure are: {\"D2ads_v5\", \"DS1_v2\"}"
+  expected_deny_message:= "Invalid VM size: 'Standard_DS1_v2'. The prohibited VM sizes for Azure are: [\"DS1_v2\", \"D2ads_v5\"]"
   result[expected_deny_message]
 }
