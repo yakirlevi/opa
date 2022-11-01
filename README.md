@@ -74,24 +74,18 @@ $ opa eval --format pretty --data {PATH_TO_REGO_FILE} --input {PATH_TO_INPUT_JSO
 ## Contributions
 
 We welcome contributions!
+We will be happy for fixing bugs or implementing new policy templates.
 
 ### Pull Requests
 
-Fixing bugs or implementing new policy templates and submitting a Pull Request.
+To submit a PR follow the standard process:
 
-A new policy must include the following files in a dedicated folder:
-* The `*.rego` file with the policy code, includes the package name `torque`  and at least one rule called `deny`, which returns an array of error message strings in case of failure.
-* `*_test.rego` defining the tests to be run and expected results when the PR checks are performed. All test names in this file should start with the prefix `test_`.
-* `*_mock.json` containing test data mocks. You should include data for both valid and invalid evaluations of each rule in the policy.
+* Fork the repository
+* Clone locally and create a new branch
+* Commit and push
+* Submit a pull request
 
-To submit a PR follow the standard process.
-
-1. Fork the repository
-2. Clone locally and create a new branch
-3. Commit and push
-4. Submit a pull request
-
-Before submitting the PR for the new policy or bug fix you should confirm it works using `opa eval` as shown above and validate the mock-based tests work using `opa test` command against the policy files folder.
+Before submitting the PR for the new policy or bug fix you should confirm it works using `opa eval` as shown above and verifies the mock-based tests work using `opa test` command against the policy files folder.
 
 Tests evaluation example:
 
@@ -103,3 +97,10 @@ data.terraform.test_validate_deny_message: PASS (483.273µs)
 --------------------------------------------------------------------------------
 PASS: 3/3
 ```
+
+### Additional Highlights For Adding A New Policy Template
+* A new dedicated folder is required that includes the following files:
+    * The `*.rego` file with the policy code, includes the package name `torque`  and at least one rule called `deny`, which returns an array of error message strings in case of failure.
+    * `*_test.rego` defining the tests to be run and expected results when the PR checks are performed. All test names in this file should start with the `test_` prefix.
+    * `*_mock.json` containing test data mocks. You should include data for both valid and invalid evaluations of each rule in the policy.
+* Append an `opa test` command execution against the folder, to the end of the [.github/scripts/run_opa_tests.sh](https://github.com/QualiTorque/opa/blob/main/.github/scripts/run_opa_tests.sh) script.
