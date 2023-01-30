@@ -16,12 +16,12 @@ result := { "decision": "Denied", "reason": "sandbox duration exceed max duratio
 }
 
 # decision := "deny" if {
-#     data.max_duration < input.duration
+#     data.max_duration < input.duration_minutes
 #     reason := "aaa"
 # } else := "manual_approval" if {
-#     data.duration_for_manual < input.duration
+#     data.duration_for_manual < input.duration_minutes
 # } else := "approved" if {
-#     data.duration_for_manual > input.duration
+#     data.duration_for_manual > input.duration_minutes
 # }
 
 # reason := "duration required manual approve" if data.duration_for_manual < input.duration
