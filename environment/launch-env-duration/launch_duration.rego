@@ -22,3 +22,7 @@ result := { "decision": "Approved" } if {
   input.action_identifier.action_type != "Launch"  
 }
 
+result := { "decision": "Denied", "reason": "Lab must have duration" } if {
+    input.action_identifier.action_type == "Launch"  
+    not contains(input, "duration_minutes")
+}
