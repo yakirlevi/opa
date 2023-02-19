@@ -4,7 +4,7 @@ import future.keywords.if
 
 result := { "decision": "Denied", "reason": "Lab duration exceeds max duration" } if {
   input.action_identifier.action_type == "Launch"
-  data.max_duration_minutes < input.duration_minutes
+  data.max_duration_minutes <= input.duration_minutes
 }
 
 result := { "decision": "Manual", "reason": "Lab duration requires approval" } if {
