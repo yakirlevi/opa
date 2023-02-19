@@ -1,3 +1,5 @@
+package torque.environment
+
 import future.keywords.if
 
 result = { "decision": "Denied", "reason": "Lab duration exceeds max duration" } if {
