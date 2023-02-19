@@ -2,9 +2,14 @@ package torque.environment
 
 import future.keywords.if
 
+has_key(x, k) { 
+	_ = x[k]
+}
+
+
 result := { "decision": "Denied", "reason": "Lab must have duration" } if {
-  input.action_identifier.action_type == "Launch"  
-  not contains(input, "duration_minutes")  
+  input.action_identifier.action_type == "Launch"    
+  not has_key(input, "duration_minutes")
 } else := { "decision": "Denied", "reason": "Lab duration exceeds max duration"  } if {
   input.action_identifier.action_type == "Launch"
   data.max_duration_minutes <= input.duration_minutes
