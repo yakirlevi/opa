@@ -97,7 +97,7 @@ data.terraform.test_validate_deny_message: PASS (483.273µs)
 --------------------------------------------------------------------------------
 PASS: 3/3
 ```
-
+# change- 
 ### Additional Highlights For Adding A New Policy Template
 * A new dedicated folder is required that includes the following files:
     * The `*.rego` file with the policy code, includes the package name `torque`  and at least one rule called `deny`, which returns an array of error message strings in case of failure.
