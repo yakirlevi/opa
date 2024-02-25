@@ -1,0 +1,20 @@
+kind: workflow
+description: some workflow 2
+inputs:
+    vm_prefix:
+        type: String
+        default: 'data_'
+jobs:
+    filter_vms:
+        kind: shell
+        spec:
+            agent:
+                name: yakir-dev-eks
+            sources:
+                - store: test-spec2-public
+                  path: scripts/print-resource.sh
+            commands:
+                - name: print
+                  command:  './print-resource.sh {{ .bindings.resource_id }}'
+            outputs:
+                - print
