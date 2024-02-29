@@ -1,5 +1,9 @@
 kind: workflow
 description: some workflow 2
+
+entity-type: env_resource
+label-selector: vm
+
 inputs:
     vm_prefix:
         type: String
