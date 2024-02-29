@@ -15,7 +15,7 @@ jobs:
             agent:
                 name: yakir-dev-eks
             sources:
-                - store: test-spec2-public
+                - store: yakir-opa
                   path: scripts/print-resource.sh
             commands:
                 - name: print
