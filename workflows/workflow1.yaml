@@ -5,9 +5,9 @@ entity-type: env_resource
 label-selector: vm
 
 inputs:
-    vm_prefix:
+    volume_id:
         type: String
-        default: 'data_'
+        default: 'volume-1'
 jobs:
     job1:
         kind: shell
