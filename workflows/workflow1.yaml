@@ -19,6 +19,6 @@ jobs:
                   path: scripts/print-resource.sh
             commands:
                 - name: print
-                  command:  './print-resource.sh {{ .bindings.resource_id }}'
+                  command:  './print-resource.sh {{ .bindings.resource_id }} {{ .inputs.volume_id }} {{ .params.token }}'
             outputs:
                 - print
