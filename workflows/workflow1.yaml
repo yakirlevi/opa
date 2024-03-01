@@ -26,3 +26,15 @@ jobs:
                   command:  './print-resource.sh {{ .bindings.resource_id }} {{ .inputs.volume_id }} {{ .params.token }}'
             outputs:
                 - print
+
+    job2:
+        kind: shell
+        depends-on: job1
+        spec:
+            agent:
+                name: yakir-dev-eks            
+            commands:
+                - name: print
+                  command:  'echo hello'
+            outputs:
+                - print
