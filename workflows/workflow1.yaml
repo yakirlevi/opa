@@ -5,9 +5,13 @@ entity-type: env_resource
 label-selector: vm
 
 inputs:
-    volume_id:
-        type: String
-        default: 'volume-1'
+  volume_id:
+    type: String
+    default: 'volume-1'
+
+outputs:
+  job_output: '{{ .jobs.job1.outputs.print }}'
+  
 jobs:
     job1:
         kind: shell
