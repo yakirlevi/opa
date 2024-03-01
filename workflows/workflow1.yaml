@@ -10,7 +10,9 @@ inputs:
     default: 'volume-1'
 
 outputs:
-  job_output: '{{ .jobs.job1.outputs.print }}'
+  job1_output: '{{ .jobs.job1.outputs.print }}'
+  job1_output: '{{ .jobs.job2.outputs.print }}'
+  workflow_input: '{{ .inputs.volume_id }}'
   
 jobs:
     job1:
@@ -35,6 +37,6 @@ jobs:
                 name: yakir-dev-eks            
             commands:
                 - name: print
-                  command:  'echo hello'
+                  command:  'echo output from job1 is {{ .jobs.job1.outputs.print }}'
             outputs:
                 - print
