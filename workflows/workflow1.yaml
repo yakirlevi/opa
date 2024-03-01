@@ -23,7 +23,7 @@ jobs:
                   path: scripts/print-resource.sh
             commands:
                 - name: print
-                  command:  './print-resource.sh {{ .bindings.resource_id }} {{ .inputs.volume_id }} {{ .params.token }}'
+                  command:  './print-resource.sh {{ .bindings.resource_id }} {{ .bindings.grain_path }} {{ .inputs.volume_id }} {{ .params.token }}'
             outputs:
                 - print
 
