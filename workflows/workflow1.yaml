@@ -6,7 +6,7 @@ label-selector: vm
 
 inputs:
   volume_id:
-    type: String
+    type: string
     default: 'volume-1'
 
 outputs:
