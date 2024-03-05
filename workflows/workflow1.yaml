@@ -1,7 +1,7 @@
 kind: workflow
 description: some workflow 2
 
-entity-type: env_resource
+scope: env_resource
 label-selector: vm
 
 inputs:
