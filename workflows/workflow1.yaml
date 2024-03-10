@@ -5,14 +5,17 @@ scope: env_resource
 label-selector: vm
 
 inputs:
-  volume_id:
+  input1:
     type: string
-    default: 'volume-1'
+    default: 'yaml-default1'
+  input2:
+    type: string
 
 outputs:
   job1_output: '{{ .jobs.job1.outputs.print }}'
   job2_output: '{{ .jobs.job2.outputs.print }}'
-  workflow_input: '{{ .inputs.volume_id }}'
+  input1: '{{ .inputs.input1 }}'
+  input2: '{{ .inputs.input2 }}'
   
 jobs:
     job1:
